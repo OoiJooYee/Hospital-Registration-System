@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class HospitalRegistrationSystem {
-    public static void main(String[] args) throws InputMismatchException{
+    public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         ArrayList<User> users = new ArrayList<User>();
         ArrayList<RegisterQueue> queues = new ArrayList<RegisterQueue>();
@@ -55,13 +55,8 @@ public class HospitalRegistrationSystem {
         int operation = 0;
 
         boolean loop = true; // continue looping until 3 (Quit) is chosen in userMenu
-        try {
-            operation = userMenu(input); // call the userMenu function
-        }
-        catch(InputMismatchException ex){
-            System.out.println("ERROR: Input format is wrong!");
-            System.exit(0);
-        }
+
+        operation = userMenu(input); // call the userMenu function
 
         while(loop){
             switch(operation){
@@ -73,36 +68,19 @@ public class HospitalRegistrationSystem {
                     boolean loop2 = true;
                     if (u == null){
                         clearConsole();
-                        try {
-                            operation = userMenu(input); // call the userMenu function
-                        }
-                        catch(InputMismatchException ex){
-                            System.out.println("ERROR: Input format is wrong!");
-                            System.exit(0);
-                        } break;
+                        operation = userMenu(input); // call the userMenu function
+                        break;
                     }
                     else{
                         if(u instanceof Administrator){
                             clearConsole();
                             System.out.println("\nAdministrator (" + u.getName() + ") user session.");
-                            try {
-                                noOp = administratorMenu(input); // call the administratorMenu function
-                            }
-                            catch(InputMismatchException ex){
-                                System.out.println("ERROR: Input format is wrong!");
-                                System.exit(0);
-                            }
+                            noOp = administratorMenu(input); // call the administratorMenu function
                             while(loop2){
                                 switch(noOp){
                                     case 1: {
                                         clearConsole(); viewUsers(users); 
-                                        try {
-                                            noOp = administratorMenu(input); // call the administratorMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        }
+                                        noOp = administratorMenu(input); // call the administratorMenu function
                                     }break;
                                     case 2: { 
                                         if (users.size() != 0){
@@ -118,39 +96,21 @@ public class HospitalRegistrationSystem {
                                             clearConsole();
                                             System.out.println("\nThere is no system user.");
                                         }
-                                        try {
-                                            noOp = administratorMenu(input); // call the administratorMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        }
-                                    } break;
+                                        noOp = administratorMenu(input); // call the administratorMenu function
+                                    }break;
                                     case 3: clearConsole(); loop2 = false; break;
                                     default: {
                                         clearConsole();
                                         System.out.println("\nInvalid operation. Please try again.");
-                                        try {
-                                            noOp = administratorMenu(input); // call the administratorMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        }
-                                    } break;
+                                        noOp = administratorMenu(input); // call the administratorMenu function
+                                    }break;
                                 }
                             }
                         }
                         else if(u instanceof Doctor){
                             clearConsole();
                             System.out.println("\nDoctor (" + u.getName() + ") user session.");
-                            try {
-                                noOp = doctorMenu(input); // call the doctorMenu function
-                            }
-                            catch(InputMismatchException ex){
-                                System.out.println("ERROR: Input format is wrong!");
-                                System.exit(0);
-                            }
+                            noOp = doctorMenu(input); // call the doctorMenu function
                             while(loop2){
                                 switch(noOp){
                                     case 1: {
@@ -168,56 +128,26 @@ public class HospitalRegistrationSystem {
                                                 System.out.println("\nMedical record is made.");
                                             }
                                         }
-                                        try {
-                                            noOp = doctorMenu(input); // call the doctorMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        }
-                                    } break;
+                                        noOp = doctorMenu(input); // call the doctorMenu function
+                                    }break;
                                     case 2: {
                                         clearConsole(); viewMedicalRecords(medicalRecords);
-                                        try {
-                                            noOp = doctorMenu(input); // call the doctorMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        }
+                                        noOp = doctorMenu(input); // call the doctorMenu function
                                     }break;
                                     case 3: {
                                         clearConsole(); viewRegisteredQueue(queues); 
-                                        try {
-                                            noOp = doctorMenu(input); // call the doctorMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        }
+                                        noOp = doctorMenu(input); // call the doctorMenu function
                                     }break;
                                     case 4: {
                                         clearConsole(); viewAppointments(appointments); 
-                                        try {
-                                            noOp = doctorMenu(input); // call the doctorMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        } 
+                                        noOp = doctorMenu(input); // call the doctorMenu function
                                     }break;
                                     case 5: loop2 = false; break;
                                     default: {
                                         clearConsole();
                                         System.out.println("\nInvalid operation. Please try again.");
-                                        try {
-                                            noOp = doctorMenu(input); // call the doctorMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        }
-                                    }
+                                        noOp = doctorMenu(input); // call the doctorMenu function
+                                    }break;
                                 }
                             }
                         }
@@ -237,13 +167,7 @@ public class HospitalRegistrationSystem {
                                             System.out.println("Your queue number is: " + q.getQueueNo());
                                             System.out.println("Currently waiting in queue: " + q.getCurrentWaitingInQueue());
                                         }
-                                        try {
-                                            noOp = patientMenu(input); break; // call the patientMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        }
+                                        noOp = patientMenu(input); // call the patientMenu function
                                     }break;
                                     case 2: {
                                         clearConsole();
@@ -252,13 +176,7 @@ public class HospitalRegistrationSystem {
                                         if (num == 1){
                                             System.out.println("\nAppointment is done.");
                                         }
-                                        try {
-                                            noOp = patientMenu(input); break; // call the patientMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        }
+                                        noOp = patientMenu(input); // call the patientMenu function
                                     }break;
                                     case 3: {
                                         if (((Patient)u).getAppointment().size() != 0){
@@ -272,26 +190,14 @@ public class HospitalRegistrationSystem {
                                             clearConsole();
                                             System.out.println("\nNo appointment is made.");
                                         }
-                                        try {
-                                            noOp = patientMenu(input); break; // call the patientMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        }
+                                        noOp = patientMenu(input); // call the patientMenu function
                                     }break;
                                     case 4: clearConsole(); loop2 = false; break;
                                     default: {
                                         clearConsole();
                                         System.out.println("\nInvalid operation. Please try again.");
-                                        try {
-                                            noOp = patientMenu(input); break; // call the patientMenu function
-                                        }
-                                        catch(InputMismatchException ex){
-                                            System.out.println("ERROR: Input format is wrong!");
-                                            System.exit(0);
-                                        }
-                                    }
+                                        noOp = patientMenu(input); // call the patientMenu function
+                                    }break;
                                 }
                             }
                         }
@@ -304,13 +210,7 @@ public class HospitalRegistrationSystem {
                     User u = registerUser(input, d);
                     if (u == null){
                         clearConsole();
-                        try {
-                            operation = userMenu(input); // call the userMenu function
-                        }
-                        catch(InputMismatchException ex){
-                            System.out.println("ERROR: Input format is wrong!");
-                            System.exit(0);
-                        }
+                        operation = userMenu(input); // call the userMenu function
                     }
                     else{
                         clearConsole();
@@ -321,13 +221,7 @@ public class HospitalRegistrationSystem {
                         else if (u instanceof Administrator)
                             System.out.println("\nAdministrator (" + u.getName() + ") registered sucessfully.");
                         users.add(u);
-                        try {
-                            operation = userMenu(input); // call the userMenu function
-                        }
-                        catch(InputMismatchException ex){
-                            System.out.println("ERROR: Input format is wrong!");
-                            System.exit(0);
-                        }
+                        operation = userMenu(input); // call the userMenu function
                     }
                 }break;
                 
@@ -338,13 +232,7 @@ public class HospitalRegistrationSystem {
                 default: {
                     clearConsole();
                     System.out.println("\nInvalid operation. Please try again.");
-                    try {
-                        operation = userMenu(input); // call the userMenu function
-                    }
-                    catch(InputMismatchException ex){
-                        System.out.println("ERROR: Input format is wrong!");
-                        System.exit(0);
-                    } 
+                    operation = userMenu(input); // call the userMenu function
                 }break;
             }
         }
@@ -359,14 +247,20 @@ public class HospitalRegistrationSystem {
     }  
 
     // for all User
-    public static int userMenu(Scanner sc) throws InputMismatchException{
+    public static int userMenu(Scanner sc){
         System.out.println("\nHOSPITAL REGISTRATION SYSTEM");
         System.out.println("----------------------------");
         System.out.println("1. Login\n2. Registration (First time user)\n3. Quit");
         System.out.printf("Choose your operation: ");
         int choice = 0;
-        choice = sc.nextInt();
-        sc.nextLine();
+        try{
+            choice = sc.nextInt();
+            sc.nextLine();
+        }
+        catch(InputMismatchException ex){
+            System.out.println("ERROR: Input format is wrong!");
+            System.exit(0);
+        }
         return choice;
     }
 
@@ -377,11 +271,18 @@ public class HospitalRegistrationSystem {
         System.out.println("1. Administrator\n2. Doctor\n3. Patient\n4. Return to Homepage");
         System.out.printf("Choose your operation: ");
         int choice = 0;
-        choice = sc.nextInt();
-        sc.nextLine();
+        try{
+            choice = sc.nextInt();
+            sc.nextLine();
+        }
+        catch(InputMismatchException ex){
+            System.out.println("ERROR: Input format is wrong!");
+            System.exit(0);
+        }
 
-        String name, ic, DOB, gender, street, city, postcode, state, phone, email, staffid, salary, role, department;
+        String name, ic, DOB, gender, street, city, state, phone, email, staffid, role, department;
         User u = null; 
+        int postcode = 0; double salary = 0;
 
         switch(choice){
             // Administrator registration
@@ -397,16 +298,32 @@ public class HospitalRegistrationSystem {
                 System.out.println("\nAddress Information");
                 System.out.print("Street: "); street = sc.nextLine();
                 System.out.print("City: "); city = sc.nextLine();
-                System.out.print("Postcode: "); postcode = sc.nextLine();
+                System.out.print("Postcode: ");
+                try{
+                    postcode = sc.nextInt();
+                    sc.nextLine();
+                }
+                catch(InputMismatchException ex){
+                    System.out.println("ERROR: Input format is wrong (Postcode is integer)!");
+                    System.exit(0);
+                }
                 System.out.print("State: "); state = sc.nextLine();
                 System.out.println("\nContact Information");
                 System.out.print("Phone No.: "); phone = sc.nextLine();
                 System.out.print("Email: "); email = sc.nextLine();
                 System.out.println("\nJob Information");
                 System.out.print("Staff ID: "); staffid = sc.nextLine();
-                System.out.print("Salary: "); salary = sc.nextLine();
+                System.out.print("Salary: "); 
+                try{
+                    salary = sc.nextDouble();
+                    sc.nextLine();
+                }
+                catch(InputMismatchException ex){
+                    System.out.println("ERROR: Input format is wrong (Salary is double)!");
+                    System.exit(0);
+                }
 
-                u = new Administrator(name, ic, DOB, gender, new Address(street, city, Integer.parseInt(postcode), state), phone, email, staffid, Double.parseDouble(salary));
+                u = new Administrator(name, ic, DOB, gender, new Address(street, city, postcode, state), phone, email, staffid, salary);
             }break;
 
             // Doctor registration
@@ -423,7 +340,15 @@ public class HospitalRegistrationSystem {
                 System.out.println("\nAddress Information");
                 System.out.print("Street: "); street = sc.nextLine();
                 System.out.print("City: "); city = sc.nextLine();
-                System.out.print("Postcode: "); postcode = sc.nextLine();
+                System.out.print("Postcode: "); 
+                try{
+                    postcode = sc.nextInt();
+                    sc.nextLine();
+                }
+                catch(InputMismatchException ex){
+                    System.out.println("ERROR: Input format is wrong (Postcode is integer)!");
+                    System.exit(0);
+                }
                 System.out.print("State: "); state = sc.nextLine();
                 System.out.println("\nContact Information");
                 System.out.print("Phone No.: "); phone = sc.nextLine();
@@ -446,9 +371,17 @@ public class HospitalRegistrationSystem {
                 }
                 while(!depValid);
                 System.out.print("Role: "); role = sc.nextLine();
-                System.out.print("Salary: "); salary = sc.nextLine();
+                System.out.print("Salary: "); 
+                try{
+                    salary = sc.nextDouble();
+                    sc.nextLine();
+                }
+                catch(InputMismatchException ex){
+                    System.out.println("ERROR: Input format is wrong (Salary is double)!");
+                    System.exit(0);
+                }
 
-                u = new Doctor(name, ic, DOB, gender, new Address(street, city, Integer.parseInt(postcode), state), phone, email, staffid, Double.parseDouble(salary), role, dep);
+                u = new Doctor(name, ic, DOB, gender, new Address(street, city, postcode, state), phone, email, staffid, salary, role, dep);
             }break;
 
             // Patient registration
@@ -466,7 +399,15 @@ public class HospitalRegistrationSystem {
                 System.out.println("\nAddress Information");
                 System.out.print("Street: "); street = sc.nextLine();
                 System.out.print("City: "); city = sc.nextLine();
-                System.out.print("Postcode: "); postcode = sc.nextLine();
+                System.out.print("Postcode: ");
+                try{
+                    postcode = sc.nextInt();
+                    sc.nextLine();
+                }
+                catch(InputMismatchException ex){
+                    System.out.println("ERROR: Input format is wrong (Postcode is integer)!");
+                    System.exit(0);
+                }
                 System.out.print("State: "); state = sc.nextLine();
                 System.out.println("\nContact Information");
                 System.out.print("Phone No.: "); phone = sc.nextLine();
@@ -479,7 +420,7 @@ public class HospitalRegistrationSystem {
                 System.out.print("Emergency Contact Relationship: "); eCRel = sc.nextLine();
                 System.out.print("Emergency Contact Phone No.: "); eCPhone = sc.nextLine();
 
-                u = new Patient(name, ic, DOB, gender, new Address(street, city, Integer.parseInt(postcode), state), phone, email, new Guardian(gName, gRel), new EmergencyContact(eCName, eCRel, eCPhone), occ);
+                u = new Patient(name, ic, DOB, gender, new Address(street, city, postcode, state), phone, email, new Guardian(gName, gRel), new EmergencyContact(eCName, eCRel, eCPhone), occ);
             }break;
 
             // Return to userMenu by returning null
@@ -503,8 +444,14 @@ public class HospitalRegistrationSystem {
         System.out.println("1. Administrator\n2. Doctor\n3. Patient\n4. Return to Homepage");
         System.out.printf("Choose your operation: ");
         int choice = 0;
-        choice = sc.nextInt();
-        sc.nextLine();
+        try{
+            choice = sc.nextInt();
+            sc.nextLine();
+        }
+        catch(InputMismatchException ex){
+            System.out.println("ERROR: Input format is wrong!");
+            System.exit(0);
+        }
 
         String ic, staffid, password;
         User u = null; 
@@ -540,6 +487,7 @@ public class HospitalRegistrationSystem {
                                 else if (op.equals("x") || op.equals("X")){
                                     tryAgain = false;
                                     again = false;
+                                    u = null;
                                 }
                                 else{
                                     System.out.println("Invalid operation. Please try again.");
@@ -605,14 +553,20 @@ public class HospitalRegistrationSystem {
     }
 
     // for Patient
-    public static int patientMenu(Scanner sc) throws InputMismatchException{
+    public static int patientMenu(Scanner sc){
         System.out.println("\nPATIENT MENU");
         System.out.println("------------");
         System.out.println("1. Take Queue Number\n2. Make Appointment\n3. Manage Appointment\n4. Logout");
         System.out.printf("Choose your operation: ");
         int choice = 0;
-        choice = sc.nextInt();
-        sc.nextLine();
+        try{
+            choice = sc.nextInt();
+            sc.nextLine();
+        }
+        catch(InputMismatchException ex){
+            System.out.println("ERROR: Input format is wrong!");
+            System.exit(0);
+        }
         return choice;
     }
 
@@ -624,8 +578,14 @@ public class HospitalRegistrationSystem {
         System.out.println("Choose the service type");
         System.out.println("1. " + services[0] + "\n2. " + services[1] + "\n3. " + services[2] + "\n4. " + services[3] + "\n5. " + services[4] + "\n6. " + services[5] + "\n7. Return to PATIENT MENU");
         System.out.printf("Service type: ");
-        serviceNo = sc.nextInt();
-        sc.nextLine();
+        try{
+            serviceNo = sc.nextInt();
+            sc.nextLine();
+        }
+        catch(InputMismatchException ex){
+            System.out.println("ERROR: Input format is wrong!");
+            System.exit(0);
+        }
         // Checking the input value for serviceNo, if invalid serviceNo is chosen, will calling takeQueueNumber function continuously
         while(serviceNo<1 || serviceNo>7){
             System.out.println("\nInvalid operation. Please try again.");
@@ -645,14 +605,20 @@ public class HospitalRegistrationSystem {
         System.out.println("2. No" );
         System.out.printf("Your choice: ");
         int choice = 0;
-        choice = sc.nextInt();
-        sc.nextLine();
+        try{
+            choice = sc.nextInt();
+            sc.nextLine();
+        }
+        catch(InputMismatchException ex){
+            System.out.println("ERROR: Input format is wrong!");
+            System.exit(0);
+        }
         while(choice<1 || choice>2){
             System.out.println("\nInvalid operation. Please try again.");
             makeAppointment(sc, p, services, app);
         }
         if (choice == 1){
-            String date, time; int service;
+            String date, time; int service = 0;
             Appointment a;
             System.out.println("\nENTER APPOINTMENT DETAILS");
             System.out.println("-------------------------");
@@ -661,8 +627,15 @@ public class HospitalRegistrationSystem {
             do{
                 System.out.println("\nChoose the service type");
                 System.out.println("1. " + services[0] + "\n2. " + services[1] + "\n3. " + services[2] + "\n4. " + services[3] + "\n5. " + services[4] + "\n6. " + services[5]);
-                System.out.print("Service: "); service = sc.nextInt();
-                sc.nextLine();
+                System.out.print("Service: "); 
+                try{
+                    service = sc.nextInt();
+                    sc.nextLine();
+                }
+                catch(InputMismatchException ex){
+                    System.out.println("ERROR: Input format is wrong!");
+                    System.exit(0);
+                }
 
                 if (service<1 || service>6){
                     System.out.println("\nInvalid service chosen. Please try again");
@@ -685,8 +658,14 @@ public class HospitalRegistrationSystem {
         System.out.println("2. No" );
         System.out.printf("Your choice: ");
         int choice = 0;
-        choice = sc.nextInt();
-        sc.nextLine();
+        try{
+            choice = sc.nextInt();
+            sc.nextLine();
+        }
+        catch(InputMismatchException ex){
+            System.out.println("ERROR: Input format is wrong!");
+            System.exit(0);
+        }
         while(choice<1 || choice>2){
             System.out.println("\nInvalid operation. Please try again.");
             manageAppointment(sc, p, services, app);
@@ -700,7 +679,7 @@ public class HospitalRegistrationSystem {
                 sc.nextLine();
                 a = searchAppointment(p, id);
                 if (a != null){
-                    int c;
+                    int c = 0;
                     do{
                         System.out.println("\nWhat appointment details to update?");
                         System.out.println("1. Date");
@@ -709,14 +688,20 @@ public class HospitalRegistrationSystem {
                         System.out.println("4. All of the above");
                         System.out.println("5. Delete appointment");
                         System.out.printf("Your choice: ");
-                        c = sc.nextInt();
-                        sc.nextLine();
+                        try{
+                            c = sc.nextInt();
+                            sc.nextLine();
+                        }
+                        catch(InputMismatchException ex){
+                            System.out.println("ERROR: Input format is wrong!");
+                            System.exit(0);
+                        }
                         if (c<1 || c>5){
                             System.out.println("\nInvalid operation. Please try again.");
                         }
                     }while(c<1 || c>5);
 
-                    String date, time; int service;
+                    String date, time; int service = 0;
                     switch(c){
                         case 1: {
                              System.out.println("\nUPDATE APPOINTMENT DETAILS");
@@ -738,8 +723,15 @@ public class HospitalRegistrationSystem {
                              do{
                                 System.out.println("Choose the service type");
                                 System.out.println("1. " + services[0] + "\n2. " + services[1] + "\n3. " + services[2] + "\n4. " + services[3] + "\n5. " + services[4] + "\n6. " + services[5]);
-                                System.out.print("Service: "); service = sc.nextInt();
-                                sc.nextLine();
+                                System.out.print("Service: "); 
+                                try{
+                                    service = sc.nextInt();
+                                    sc.nextLine();
+                                }
+                                catch(InputMismatchException ex){
+                                    System.out.println("ERROR: Input format is wrong!");
+                                    System.exit(0);
+                                }
 
                                 if (service<1 || service>6){
                                     System.out.println("\nInvalid service chosen. Please try again");
@@ -756,8 +748,15 @@ public class HospitalRegistrationSystem {
                              do{
                                 System.out.println("\nChoose the service type");
                                 System.out.println("1. " + services[0] + "\n2. " + services[1] + "\n3. " + services[2] + "\n4. " + services[3] + "\n5. " + services[4] + "\n6. " + services[5]);
-                                System.out.print("Service: "); service = sc.nextInt();
-                                sc.nextLine();
+                                System.out.print("Service: "); 
+                                try{
+                                    service = sc.nextInt();
+                                    sc.nextLine();
+                                }
+                                catch(InputMismatchException ex){
+                                    System.out.println("ERROR: Input format is wrong!");
+                                    System.exit(0);
+                                }
 
                                 if (service<1 || service>6){
                                     System.out.println("\nInvalid service chosen. Please try again");
@@ -789,7 +788,7 @@ public class HospitalRegistrationSystem {
     }
 
     // for Doctor
-    public static int doctorMenu(Scanner sc) throws InputMismatchException{
+    public static int doctorMenu(Scanner sc){
         System.out.println("\nDOCTOR MENU");
         System.out.println("-----------");
         System.out.println("1. Make Medical Record");
@@ -799,8 +798,14 @@ public class HospitalRegistrationSystem {
         System.out.println("5. Logout");
         System.out.printf("Choose your operation: ");
         int choice = 0;
-        choice = sc.nextInt();
-        sc.nextLine();
+        try{
+            choice = sc.nextInt();
+            sc.nextLine();
+        }
+        catch(InputMismatchException ex){
+            System.out.println("ERROR: Input format is wrong!");
+            System.exit(0);
+        }
         return choice;
     }
 
@@ -812,8 +817,14 @@ public class HospitalRegistrationSystem {
         System.out.println("2. No" );
         System.out.printf("Your choice: ");
         int choice = 0;
-        choice = sc.nextInt();
-        sc.nextLine();
+        try{
+            choice = sc.nextInt();
+            sc.nextLine();
+        }
+        catch(InputMismatchException ex){
+            System.out.println("ERROR: Input format is wrong!");
+            System.exit(0);
+        }
         while(choice<1 || choice>2){
             System.out.println("\nInvalid operation. Please try again.");
             makeMedicalRecord(sc, p, d, records);
@@ -871,7 +882,7 @@ public class HospitalRegistrationSystem {
     }
 
     // for Administrator
-    public static int administratorMenu(Scanner sc){
+    public static int administratorMenu(Scanner sc) throws InputMismatchException{
         System.out.println("\nADMINISTRATOR MENU");
         System.out.println("------------------");
         System.out.println("1. View Users");
@@ -879,8 +890,14 @@ public class HospitalRegistrationSystem {
         System.out.println("3. Logout");
         System.out.printf("Choose your operation: ");
         int choice = 0;
-        choice = sc.nextInt();
-        sc.nextLine();
+        try{
+            choice = sc.nextInt();
+            sc.nextLine();
+        }
+        catch(InputMismatchException ex){
+            System.out.println("ERROR: Input format is wrong!");
+            System.exit(0);
+        }
         return choice;
     }
 
@@ -934,8 +951,14 @@ public class HospitalRegistrationSystem {
         System.out.println("2. No" );
         System.out.printf("Your choice: ");
         int choice = 0;
-        choice = sc.nextInt();
-        sc.nextLine();
+        try{
+            choice = sc.nextInt();
+            sc.nextLine();
+        }
+        catch(InputMismatchException ex){
+            System.out.println("ERROR: Input format is wrong!");
+            System.exit(0);
+        }
         while(choice<1 || choice>2){
             System.out.println("\nInvalid operation. Please try again.");
             manageUsers(sc, users, dep);
@@ -949,7 +972,7 @@ public class HospitalRegistrationSystem {
                 String id = sc.nextLine();
                 u = searchUsers(users, id);
                 if (u != null){
-                    int c; clearConsole();
+                    int c = 0; clearConsole();
                     do{
                         System.out.println();
                         u.displayInfo();
@@ -980,8 +1003,14 @@ public class HospitalRegistrationSystem {
                             System.out.println("10. Delete Administrator");
                         }
                         System.out.printf("Your choice: ");
-                        c = sc.nextInt();
-                        sc.nextLine();
+                        try{
+                            c = sc.nextInt();
+                            sc.nextLine();
+                        }
+                        catch(InputMismatchException ex){
+                            System.out.println("ERROR: Input format is wrong!");
+                            System.exit(0);
+                        }
                         if ((c<1 || c>11) && u instanceof Patient){
                             clearConsole();
                             System.out.println("\nInvalid operation. Please try again.");
@@ -1000,11 +1029,11 @@ public class HospitalRegistrationSystem {
                     }while(c<1 || c>12);
 
                     // for all User
-                    String n, ic, dob, gender, street, city, postcode, state, phone, email; 
+                    String n, ic, dob, gender, street, city, state, phone, email; int postcode = 0; 
                     // for Patient
                     String occ, gN, gRel, eCN, eCRel, eCPhone;
                     // for Satff
-                    String staffId, salary;
+                    String staffId; double salary = 0;
                     // for Doctor
                     String role, department;
 
@@ -1039,9 +1068,17 @@ public class HospitalRegistrationSystem {
                              System.out.println("Address Information");
                              System.out.print("Street: "); street = sc.nextLine();
                              System.out.print("City: "); city = sc.nextLine();
-                             System.out.print("Postcode: "); postcode = sc.nextLine();
+                             System.out.print("Postcode: "); 
+                             try{
+                                postcode = sc.nextInt();
+                                sc.nextLine();
+                             }
+                             catch(InputMismatchException ex){
+                                 System.out.println("ERROR: Input format is wrong (Postcode is integer)!");
+                                 System.exit(0);
+                             }
                              System.out.print("State: "); state = sc.nextLine();
-                             u.setAddress(new Address(street, city, Integer.parseInt(postcode), state));
+                             u.setAddress(new Address(street, city, postcode, state));
                         }break;
                         case 6: {
                              System.out.println("\nUPDATE USER DETAILS");
@@ -1077,8 +1114,16 @@ public class HospitalRegistrationSystem {
                                 ((Patient)u).setGuardian(new Guardian(gN, gRel));
                              }
                              else{
-                                System.out.print("Salary: "); salary = sc.nextLine();
-                                ((Staff)u).setSalary(Integer.parseInt(salary));
+                                System.out.print("Salary: "); 
+                                try{
+                                    salary = sc.nextDouble();
+                                    sc.nextLine();
+                                }
+                                catch(InputMismatchException ex){
+                                    System.out.println("ERROR: Input format is wrong (Salary is double)!");
+                                    System.exit(0);
+                                }
+                                ((Staff)u).setSalary(salary);
                              }   
                         }break;
                         case 10: {
